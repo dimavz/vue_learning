@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Vue JS </title>
@@ -16,45 +16,59 @@
     <h3>Functions: {{ myname.split('').reverse().join('')}}</h3>
     <a v-bind:href="url">Перейти на Google</a>
     <p v-html="link"></p>
-    <p> Счётчик = {{counter}}</p>
-    <button v-on:click="counter++">Увеличить</button>
+    <p> {{title}} = {{counter}}</p>
+    <button v-on:click="counter++">Увеличить на 1</button>
+    <button v-on:click="raiseCounter(5,'Счётчик',$event)">Увеличить на 5</button>
+    <button v-on:click="raiseCounter(10, 'Значение',$event)">Увеличить на 10</button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
- new Vue({
-     el:'#app',
-     data:{
-         name:'Vue!!!',
-         number1:0,
-         number2:0,
-         isOk:false,
-         myname:'Dmitry',
-         url:'http://google.com',
-         link: '<a href="http://google.com">Google</a>',
-         sum:0,
-         counter:0
-     },
-     methods:{
-         sayHello:function(){
-             return 'I am function'
-         },
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'Vue!!!',
+            title: 'Счётчик',
+            number1: 0,
+            number2: 0,
+            isOk: false,
+            myname: 'Dmitry',
+            url: 'http://google.com',
+            link: '<a href="http://google.com">Google</a>',
+            sum: 0,
+            counter: 0
+        },
+        methods: {
+            sayHello: function () {
+                return 'I am function'
+            },
 
-         changeName:function (e) {
-             this.name = e.target.value
-         },
-         changeNumber1:function (e) {
-             this.number1 = e.target.value
-             this.sumNumbers()
-         },
-         changeNumber2:function (e) {
-             this.number2 = e.target.value
-             this.sumNumbers()
-         },
-         sumNumbers:function () {
-             this.sum = Number(this.number1) + Number(this.number2)
-         }
-     }
- })
+            changeName: function (e) {
+                this.name = e.target.value
+            },
+            changeNumber1: function (e) {
+                this.number1 = e.target.value
+                this.sumNumbers()
+            },
+            changeNumber2: function (e) {
+                this.number2 = e.target.value
+                this.sumNumbers()
+            },
+            sumNumbers: function () {
+                this.sum = Number(this.number1) + Number(this.number2)
+            },
+            raiseCounter: function (num, title, event) {
+                this.counter += num
+                this.title = title
+                if (num === 5) {
+                    event.target.style.border = '1px solid blue'
+                }
+                else if(num === 10)
+                {
+                    event.target.style.border = '1px solid red'
+                }
+            }
+        }
+    })
 </script>
 </body>
 </html>
