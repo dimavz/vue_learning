@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Vue JS </title>
 </head>
 <body>
+<div id="app">
+    <input type="text" v-on:input="changeName">
+    <input type="text" v-on:input="changeNumber1">
+    <input type="text" v-on:input="changeNumber2">
+    <h1>String: {{name}}</h1>
+    <h2>Sum: {{sum}}</h2>
+    <h3>Method: {{ sayHello()}}</h3>
+    <h3>if statement: {{ isOk ? 'Работает':'Не работает'}}</h3>
+    <h3>Functions: {{ myname.split('').reverse().join('')}}</h3>
+    <a v-bind:href="url">Перейти на Google</a>
+    <p v-html="link"></p>
+    <p> Счётчик = {{counter}}</p>
+    <button v-on:click="counter++">Увеличить</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+ new Vue({
+     el:'#app',
+     data:{
+         name:'Vue!!!',
+         number1:0,
+         number2:0,
+         isOk:false,
+         myname:'Dmitry',
+         url:'http://google.com',
+         link: '<a href="http://google.com">Google</a>',
+         sum:0,
+         counter:0
+     },
+     methods:{
+         sayHello:function(){
+             return 'I am function'
+         },
 
+         changeName:function (e) {
+             this.name = e.target.value
+         },
+         changeNumber1:function (e) {
+             this.number1 = e.target.value
+             this.sumNumbers()
+         },
+         changeNumber2:function (e) {
+             this.number2 = e.target.value
+             this.sumNumbers()
+         },
+         sumNumbers:function () {
+             this.sum = Number(this.number1) + Number(this.number2)
+         }
+     }
+ })
+</script>
 </body>
 </html>
