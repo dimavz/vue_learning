@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 8. Модификаторы событий</title>
+</head>
+<body>
+<div id="app">
+    <h2 v-on:mousemove="handleMouseMove">
+        X = {{x}}, Y={{y}}
+        <span v-on:mousemove.stop="">Не изменять</span>
+    </h2>
+    <hr>
+    <p><input type="text" v-on:keyup="alertValue"></p>
+    <p><input type="text" v-on:keyup.enter="alertModificatorValue"></p>
+    <p><input type="text" v-on:keyup.space="alertModificatorValue"></p>
+    <p><input type="text" v-on:keyup.enter.space="alertModificatorValue"></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            x:0,
+            y:0
+        },
+        methods: {
+            handleMouseMove:function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            alertValue:function (event) {
+                if(event.keyCode === 13)
+                {
+                    alert(event.target.value)
+                }
+            },
+            alertModificatorValue:function (event) {
+                    alert(event.target.value)
+            }
+        }
+    })
+</script>
+</body>
+</html>
