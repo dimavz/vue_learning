@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 16. Работа со списками. Часть 2</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 16. Работа со списками. Часть 2</h1>
+    <ul>
+        <li v-for="(person, index) in people">{{index + 1}}. {{person.name}} - {{person.age}} </li>
+    </ul>
+    <hr>
+    <ol>
+        <li v-for="num of 3">{{num}}</li>
+    </ol>
+    <hr>
+    <select>
+        <option v-for="(value,key,ind) in person"><b>{{ind +1}}.{{key}}</b> - {{value}}</option>
+    </select>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            people:[
+                {name:'Сергей', age:'20'},
+                {name:'Влад', age:'24'},
+                {name:'Елена', age:'27'},
+                {name:'Юрий', age:'21'},
+            ],
+            person:{
+                name:"Олег",
+                age:24,
+                job:'Programmer',
+            }
+        },
+        computed: {},
+        methods: {}
+    })
+</script>
+</body>
+</html>

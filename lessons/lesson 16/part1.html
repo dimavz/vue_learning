@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 16. Работа со списками</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 16. Работа со списками</h1>
+    <ul>
+        <li>{{people[0]}}</li>
+        <li>{{people[1]}}</li>
+        <li>{{people[2]}}</li>
+        <li>{{people[3]}}</li>
+    </ul>
+<!-- Более лучший вариант вывода списка-->
+    <ul>
+        <li v-for="person in people">{{person}}</li>
+    </ul>
+
+    <ul>
+        <li v-for="(person, index) in people">{{index + 1}}. {{person}}</li>
+    </ul>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            people:[
+                'Сергей',
+                'Влад',
+                'Елена',
+                'Юрий',
+            ]
+        },
+        computed: {},
+        methods: {}
+    })
+</script>
+</body>
+</html>
