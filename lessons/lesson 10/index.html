@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 10. Ярлыки для директив</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 10. Ярлыки для директив</h1>
+    <h2>
+        <a :href="url">Перейти на Google</a>
+    </h2>
+    <h2>
+        Counter: {{counter}}
+    </h2>
+    <button v-on:click="counter++">Увеличить</button>
+    <button @click="counter++">Увеличить</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            url: 'http://google.com',
+            counter: 0
+        },
+        methods: {
+
+        }
+    })
+</script>
+</body>
+</html>
+
+<!-- вместо v-on: можно использовать @. Символ @ в данном случае является ярлыком для v-on: -->

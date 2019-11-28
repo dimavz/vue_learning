@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 11. Модель для работы с формами</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 11. Модель для работы с формами</h1>
+    <input type="text" @input="inputValue = $event.target.value" :value="inputValue">
+<!--    Тоже самое-->
+    <input type="text" v-model="inputValue">
+<!--    использование модификатора события lazy-->
+    <input type="text" v-model.lazy="inputValue">
+    <h2>{{inputValue}}</h2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            inputValue:'Initial Value'
+        },
+        methods: {
+        }
+    })
+</script>
+</body>
+</html>
