@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 12. Работа с CSS классами</title>
+    <style>
+        .circle{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: inline-block;
+            margin: 40px;
+        }
+        .red{background: red;}
+        .blue{background: blue;}
+        .green{background: green;}
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 12. Работа с CSS классами</h1>
+    <div class="circle"
+         @click="isActive = !isActive"
+         :class="{'red':isActive,'green':!isActive}"
+    >
+    </div>
+    <!--       Как вариант лучше использовать метод, который возвращает классы -->
+    <div class="circle"
+         @click="isActive = !isActive"
+         :class="getCssClasses()"
+    >
+    </div>
+    <!--   А ещё лучше использовать метод, который возвращает вычесленные классы через свойство computed объекта Vue-->
+
+    <div class="circle"
+         @click="isActive = !isActive"
+         :class="getCssClasses1"
+    >
+    </div>
+
+    <div class="circle" :class="[color,{'red':isActive,'blue':!isActive }]"></div>
+    <input type="text" v-model="color">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isActive:false,
+            color:''
+        },
+        computed:{
+            getCssClasses1:function () {
+                return {
+                    'red':this.isActive,
+                    'green':!this.isActive
+                }
+            }
+        },
+        methods: {
+            getCssClasses:function () {
+                return {
+                    'red':this.isActive,
+                    'green':!this.isActive
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

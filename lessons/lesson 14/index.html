@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 14. Управление отображением элементов</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 14. Управление отображением элементов</h1>
+    <h2 v-if="isVisible">Блок 1</h2>
+<!--    <h2 v-if="!isVisible">Блок 2</h2>-->
+    <h2 v-else>Блок 2</h2>
+    <button @click="isVisible = !isVisible">Отобразить другой блок</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isVisible: true
+        },
+        computed: {},
+        methods: {}
+    })
+</script>
+</body>
+</html>

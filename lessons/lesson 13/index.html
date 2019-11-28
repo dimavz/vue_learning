@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 13. Динамические стили</title>
+    <style>
+        .circle{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: inline-block;
+            margin: 40px;
+        }
+        .red{background: red;}
+        .blue{background: blue;}
+        .green{background: green;}
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 13. Динамические стили</h1>
+    <div class="circle" :style="getCircleClasses"></div>
+    <div class="circle" :style="[getCircleClasses,{'width': height +'px'}]"></div>
+    <hr>
+
+    <input type="text" v-model="color">
+    <input type="text" v-model="height">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isActive:false,
+            color:'blue',
+            height:100,
+        },
+        computed:{
+            getCircleClasses:function () {
+                return {
+                    'background':this.color,
+                    'height':this.height +'px',
+                }
+            }
+        },
+        methods: {
+        }
+    })
+</script>
+</body>
+</html>
