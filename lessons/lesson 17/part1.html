@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 17. Оптимизация приложения с computed</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 17. Оптимизация приложения с computed</h1>
+    <h2>{{counter}}</h2>
+    <button @click="add">Add</button>
+    <button @click="sub">Sub</button>
+    <h3>{{condition}}</h3>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            condition:'Меньше или равно 3'
+        },
+        computed: {},
+        methods: {
+            add:function () {
+                this.counter++
+                this.condition = this.counter >3 ? 'Больше чем 3':'Меньше или равно 3'
+            },
+            sub:function () {
+                this.counter--
+                this.condition = this.counter >3 ? 'Больше чем 3':'Меньше или равно 3'
+            }
+        }
+    })
+</script>
+</body>
+</html>
