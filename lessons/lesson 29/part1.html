@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 29. Локальная и глобальная регистрация. Часть 1</title>
+</head>
+<body>
+<h1>Урок 29. Локальная и глобальная регистрация. Часть 1</h1>
+
+<div id="app">
+    <mycounter v-for="count in 2"></mycounter>
+</div>
+<hr>
+<div id="app2">
+    <MyCounter></MyCounter>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    var component = {
+        template: `<div style="border: 1px solid red; padding: 10px;">
+           <h2>Counter {{counter}}</h2>
+           <button @click="add">Увеличить</button>
+        </div>`,
+        data:function(){
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            add:function () {
+                this.counter++
+            }
+        }
+    }
+
+    // Vue.component('mycounter', {
+    //     template: `<div style="border: 1px solid red; padding: 10px;">
+    //        <h2>Counter {{counter}}</h2>
+    //        <button @click="add">Увеличить</button>
+    //     </div>`,
+    //     data:function(){
+    //         return {
+    //             counter: 0
+    //         }
+    //     },
+    //     methods: {
+    //         add:function () {
+    //             this.counter++
+    //         }
+    //     }
+    // })
+
+    new Vue({
+        el: '#app',
+        components:{
+            'mycounter':component
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        components:{
+            'mycounter':component
+        }
+    })
+
+</script>
+</body>
+</html>
