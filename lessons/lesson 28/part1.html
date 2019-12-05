@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 28. Метод data. Часть 1</title>
+</head>
+<body>
+<h1>Урок 28. Метод data. Часть 1</h1>
+
+<div id="app">
+    <mycounter v-for="count in 2"></mycounter>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    var dataObj = {
+        counter: 0
+    }
+
+    Vue.component('mycounter', {
+        template: `<div style="border: 1px solid red; padding: 10px;">
+           <h2>Counter {{counter}}</h2>
+           <button @click="add">Увеличить</button>
+        </div>`,
+        data:function(){
+            return dataObj
+
+        },
+        methods: {
+            add:function () {
+                this.counter++
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app'
+    })
+
+</script>
+</body>
+</html>

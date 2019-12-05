@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 24. Установка CLI и создание проекта. Часть 1</title>
+</head>
+<body>
+<h1>Урок 24. Установка CLI и создание проекта. Часть 1</h1>
+
+<div id="app">{{title}}</div>vue
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue1 = new Vue({
+        data: {
+            title: 'Hello I am Vue!',
+        },
+        methods: {
+        },
+        computed: {},
+        watch: {},
+    });
+    vue1.$mount('#app')
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 22. Жизненный цикл. Часть 1</title>
+</head>
+<body>
+<h1>Урок 22. Жизненный цикл. Часть 1</h1>
+
+<div id="app">
+    <h2>{{title}}</h2>
+    <button @click='updateTitle()'>Update title</button>
+    <button @click="destroyVue()">Уничтожить объект Vue</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue1 = new Vue({
+        data: {
+            title: 'Hello I am Vue!',
+        },
+        beforeCreate: function () { // Вызывается перед созданием Vue приложения
+            console.log('Before Create')
+        },
+        created:function(){ // Вызывается когда Vue приложение создано, но ещё нет анализа html кода
+            console.log('Created')
+        },
+        beforeMount:function(){
+            // В данной функции Vue начало анализ html кода и собирается вставить скомпилированный шаблон в DOM дерево,
+            //но при этом на этом этапе шаблон ещё не вставился
+            console.log('Before Mount')
+        },
+        mounted:function(){ // В данной функции Vue вставило html шаблон в DOM дерево
+            console.log('Mounted')
+        },
+        beforeUpdate:function(){ // Данная функция вызывается Vue перед обновлением чего либо
+            console.log('Before Update')
+        },
+        updated:function(){// Данная функция вызывается Vue когда обновлением чего либо выполнено
+            console.log('Updated')
+        },
+        beforeDestroy:function(){
+            console.log('Before Destroy')
+        },
+        destroyed:function(){
+            console.log('Destroyed')
+        },
+        methods: {
+            updateTitle: function () {
+                this.title = 'New title'
+            },
+            destroyVue:function () {
+                this.$destroy()
+            }
+        },
+        computed: {},
+        watch: {},
+    });
+
+    vue1.$mount('#app')
+
+</script>
+</body>
+</html>
