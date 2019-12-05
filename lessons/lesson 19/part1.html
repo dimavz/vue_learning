@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 19. Связывание разных приложений. Инстанс vue</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 19. Связывание разных приложений. Инстанс vue</h1>
+    <h2>{{title}}</h2>
+    <button @click="title = 'Update title'">Update title</button>
+</div>
+<hr>
+<div id="app2">
+    <h2>{{title}}</h2>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello I am Vue!',
+        },
+        methods: {
+        },
+        computed: {
+
+        },
+        watch:{
+
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            title:'Hello from Vue2'
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

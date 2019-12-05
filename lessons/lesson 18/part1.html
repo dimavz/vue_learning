@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 18. Отслеживание изменений с watch</title>
+</head>
+<body>
+<div id="app">
+    <h1>Урок 18. Отслеживание изменений с watch</h1>
+    <h2>{{counter}}</h2>
+    <button @click="add">Add</button>
+    <button @click="sub">Sub</button>
+    <button @click="counter2++">Add Counter 2</button>
+    <button @click="counter2--">Sub Counter 2</button>
+    <h2> Counter {{counter}} \ {{counter2}}</h2>
+    <h2> Result {{result()}}</h2>
+    <h2> ComputedResult {{computedResult}}</h2>
+    <!--    <h3>{{condition}}</h3>-->
+    <h3>{{result()}}</h3>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            // condition:'Меньше или равно 3'
+            counter2: 0
+        },
+        methods: {
+            add:function () {
+                this.counter++
+                // this.condition = this.counter >3 ? 'Больше чем 3':'Меньше или равно 3'
+            },
+            sub:function () {
+                this.counter--
+                // this.condition = this.counter >3 ? 'Больше чем 3':'Меньше или равно 3'
+            },
+            result:function () {
+                console.log('Result was colled');
+                return this.counter >3 ? 'Больше чем 3':'Меньше или равно 3'
+            }
+        },
+        computed: {
+            computedResult:function () {
+                console.log('ComputedResult was colled');
+                return this.counter >3 ? 'Больше чем 3':'Меньше или равно 3'
+            }
+        },
+        watch:{
+            counter: function (val) {
+                // Функция вызывается только тогда, когда изменяется одноимённая переменная counter
+                console.log('From watch object',this.counter)
+                console.log('From watch counter',val)
+                this.counter2 = val
+            }
+        }
+    })
+</script>
+</body>
+</html>

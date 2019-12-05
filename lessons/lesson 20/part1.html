@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 20. Доступ к DOM элементам. Часть 1</title>
+</head>
+<body>
+
+<div id="app">
+    <h1>Урок 20. Доступ к DOM элементам. Часть 1</h1>
+    <h2 ref="heading">{{title}}</h2>
+    <button @click="updateTitle()">Update title</button>
+    <p ref="textline">Lorem ipsum dolor sit amet.</p>
+    <hr ref="colorline">
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue1 = new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello I am Vue!',
+        },
+        methods: {
+            updateTitle:function () {
+                this.title = 'New title'
+                console.log(this.$refs)
+                this.$refs.heading.style.color = 'red'
+                this.$refs.textline.style.color = 'green'
+                this.$refs.colorline.style.border = '1px solid blue'
+            }
+        },
+        computed: {},
+        watch: {}
+    });
+
+</script>
+</body>
+</html>

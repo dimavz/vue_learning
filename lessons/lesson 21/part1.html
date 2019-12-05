@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Урок 21. Свойство template. Часть 1</title>
+</head>
+<body>
+
+<div id="app">
+    <h1>Урок 21. Свойство template. Часть 1</h1>
+    <h2>{{title}}</h2>
+    <button @click="updateTitle()">Update title</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vue1 = new Vue({
+        data: {
+            title: 'Hello I am Vue!',
+        },
+        methods: {
+            updateTitle:function () {
+                this.title = 'New title'
+            }
+        },
+        computed: {},
+        watch: {}
+    });
+
+    vue1.$mount('#app')
+
+</script>
+</body>
+</html>
