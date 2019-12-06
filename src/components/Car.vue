@@ -2,6 +2,7 @@
     <div class="car">
         <h2>Model: {{model}} / {{reverseName}}</h2>
         <h2>Year: {{year}}</h2>
+        <button @click="changeModel">Изменить модель</button>
     </div>
 </template>
 
@@ -27,8 +28,14 @@
             reverseName(){
                 return this.model.split('').reverse().join('')
             }
+        },
+        methods:{
+            changeModel(){
+                this.model = 'Mazda'
+                this.$emit('modelChange', this.model +' '+ this.year)
+                // Метод $emit передаёт событие (первый параметр) и значение (второй параметр) в родительский компонент
+            }
         }
-
     }
 </script>
 

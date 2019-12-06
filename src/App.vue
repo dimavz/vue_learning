@@ -1,9 +1,10 @@
 <template>
     <div id="app">
-        <!--    <img alt="Vue logo" src="./assets/logo.png">-->
-        <MyComponent msg="Урок 33. Валидация входящих параметров"/>
-        <Car :model="model" :year="year"></Car>
-        <Car  :year="year"></Car>
+        <img alt="Vue logo" src="./assets/logo.png">
+        <h1>Parent Model:{{model}}</h1>
+        <MyComponent msg="Урок 34. Передача параметров от дочернего компонента"/>
+        <Car :model="model" :year="year" @modelChange="model = $event"></Car>
+        <Car :year="year"></Car>
     </div>
 </template>
 
