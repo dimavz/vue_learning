@@ -1,9 +1,9 @@
 <template>
     <div id="app">
         <!--    <img alt="Vue logo" src="./assets/logo.png">-->
-        <MyComponent msg="Welcome to Your Vue.js App"/>
+        <MyComponent msg="Урок 33. Валидация входящих параметров"/>
         <Car :model="model" :year="year"></Car>
-        <Car :model="model" :year="year"></Car>
+        <Car  :year="year"></Car>
     </div>
 </template>
 
