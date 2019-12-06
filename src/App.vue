@@ -2,8 +2,8 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png">
         <h1>Parent Model:{{model}}</h1>
-        <MyComponent msg="Урок 34. Передача параметров от дочернего компонента"/>
-        <Car :model="model" :year="year" @modelChange="model = $event"></Car>
+        <MyComponent msg="Урок 35. Передача функции как параметр"/>
+        <Car :model="model" :year="year" @modelChange="model = $event" :changeFunc="changeModelToAudi"></Car>
         <Car :year="year"></Car>
     </div>
 </template>
@@ -22,6 +22,11 @@
         },
         components: {
             MyComponent, Car
+        },
+        methods:{
+            changeModelToAudi(){
+                this.model = 'Audi'
+            }
         }
     }
 </script>

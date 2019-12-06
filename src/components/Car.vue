@@ -3,6 +3,7 @@
         <h2>Model: {{model}} / {{reverseName}}</h2>
         <h2>Year: {{year}}</h2>
         <button @click="changeModel">Изменить модель</button>
+        <button @click="changeFunc">Изменить модель из Родителя</button>
     </div>
 </template>
 
@@ -22,6 +23,9 @@
             },
             year:{
                 type: Number
+            },
+            changeFunc:{
+                type:Function
             }
         },
         computed:{
