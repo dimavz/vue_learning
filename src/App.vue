@@ -2,26 +2,32 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png">
         <h1>Parent Model:{{model}}</h1>
-        <MyComponent msg="Урок 35. Передача функции как параметр"/>
+        <MyComponent msg="Урок 36. Связь дочерних компонентов"/>
+        <Counter :counter="counter"></Counter>
         <Car :model="model" :year="year" @modelChange="model = $event" :changeFunc="changeModelToAudi"></Car>
-        <Car :year="year"></Car>
+        <Car :year="year" :counter="counter" @counterUpdated="counter = $event"></Car>
+
     </div>
 </template>
 
 <script>
     import MyComponent from './components/MyComponent.vue'
     import Car from './components/Car.vue'
+    import Counter from './components/Counter.vue'
 
     export default {
         name: 'app',
         data() {
             return {
                 model: 'Ford',
-                year: 2017
+                year: 2017,
+                counter:0
             }
         },
         components: {
-            MyComponent, Car
+            MyComponent,
+            Car,
+            Counter,
         },
         methods:{
             changeModelToAudi(){

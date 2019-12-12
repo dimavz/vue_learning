@@ -4,6 +4,7 @@
         <h2>Year: {{year}}</h2>
         <button @click="changeModel">Изменить модель</button>
         <button @click="changeFunc">Изменить модель из Родителя</button>
+        <button @click="updateCounter">Обновить Счётчик</button>
     </div>
 </template>
 
@@ -26,6 +27,9 @@
             },
             changeFunc:{
                 type:Function
+            },
+            counter:{
+                type: Number
             }
         },
         computed:{
@@ -38,6 +42,9 @@
                 this.model = 'Mazda'
                 this.$emit('modelChange', this.model +' '+ this.year)
                 // Метод $emit передаёт событие (первый параметр) и значение (второй параметр) в родительский компонент
+            },
+            updateCounter(){
+                this.$emit('counterUpdated',this.counter+1)
             }
         }
     }
