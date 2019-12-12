@@ -9,6 +9,8 @@
 </template>
 
 <script>
+    import {eventEmitter} from "@/main";
+
     export default {
         name: "Car",
         // props:['model','year']
@@ -28,9 +30,6 @@
             changeFunc:{
                 type:Function
             },
-            counter:{
-                type: Number
-            }
         },
         computed:{
             reverseName(){
@@ -44,7 +43,8 @@
                 // Метод $emit передаёт событие (первый параметр) и значение (второй параметр) в родительский компонент
             },
             updateCounter(){
-                this.$emit('counterUpdated',this.counter+1)
+                // this.$emit('counterUpdated',this.counter+1)
+                eventEmitter.$emit('counterUpdated',3)
             }
         }
     }

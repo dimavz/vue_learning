@@ -2,10 +2,10 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png">
         <h1>Parent Model:{{model}}</h1>
-        <MyComponent msg="Урок 36. Связь дочерних компонентов"/>
-        <Counter :counter="counter"></Counter>
+        <MyComponent msg="Урок 37. Использование event emitter"/>
+        <Counter></Counter>
         <Car :model="model" :year="year" @modelChange="model = $event" :changeFunc="changeModelToAudi"></Car>
-        <Car :year="year" :counter="counter" @counterUpdated="counter = $event"></Car>
+        <Car :year="year" @counterUpdated="counter = $event"></Car>
 
     </div>
 </template>
@@ -21,7 +21,6 @@
             return {
                 model: 'Ford',
                 year: 2017,
-                counter:0
             }
         },
         components: {
